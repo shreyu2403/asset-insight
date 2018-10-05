@@ -36,14 +36,14 @@ a.append(0)
 
 df1['angles'] = a
 
-a_cross = []
+#cross vproduct checking
+#a_cross = []
+#a_cross.append(0)
+#for i in range(0, len(vects) - 1):
+#    a_cross.append(angle_between_vectors_degrees(vects[i], vects[i + 1]))
+#a_cross.append(0)
 
-a_cross.append(0)
-for i in range(0, len(vects) - 1):
-    a_cross.append(angle_between_vectors_degrees(vects[i], vects[i + 1]))
-a_cross.append(0)
-
-df1['angles_cross']=a_cross
+#df1['angles_cross']=a_cross
 
 import dateutil
 import geopy.distance
@@ -72,5 +72,12 @@ for i in delta:
 
 df1['deltaT']= deltaT
 df1['speed']=df1['distances'].div(df1.deltaT, axis=0)
-df1.to_csv('Compactor_modified1.csv')
+
+a_sum = 0.0
+for i,row in df1.loc[df1['speed'].notnull(),:].iterrows():
+    total=df1['angles'].sum()
+
+print(total)
+
+#df1.to_csv('Compactor_modified1.csv')
 print("success")
