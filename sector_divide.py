@@ -49,8 +49,8 @@ max_lon=df['fltLongitude'].max()
 
 
 
-gridyy=np.linspace(min_lat,max_lat,5)
-gridyx=np.linspace(min_lon,max_lon,5)
+gridyy=np.linspace(min_lat,max_lat,10)
+gridyx=np.linspace(min_lon,max_lon,10)
 
 lat = df.loc[(df.speed > 0.25),'fltLatitude'].values
 lon = df.loc[(df.speed > 0.25),'fltLongitude'].values
@@ -61,6 +61,3 @@ plt.colorbar()
 #df.loc[(df.speed > 0.25) , ['fltLatitude','fltLongitude']].plot.scatter( x ='fltLatitude',y ='fltLongitude',s = 30, color = '#539caf', alpha = 0.75)
 
 plt.show()
-
-
-

@@ -49,6 +49,7 @@ import dateutil
 import geopy.distance
 from geopy.distance import geodesic
 from geopy.distance import lonlat, distance
+from collections import Counter
 
 df1['lat_long'] = [', '.join(str(x) for x in y) for y in map(tuple, df1[['fltLatitude', 'fltLongitude']].values)]
 
@@ -73,11 +74,19 @@ for i in delta:
 df1['deltaT']= deltaT
 df1['speed']=df1['distances'].div(df1.deltaT, axis=0)
 
-a_sum = 0.0
-for i,row in df1.loc[df1['speed'].notnull(),:].iterrows():
-    total=df1['angles'].sum()
+counttime=0
+workTime=0
+#for row in df1.itertuples():
+#    if getattr(row,'angles') > 170:
+#        counttime=counttime+1
+#    if counttime > 2 and getattr(row,'speed') > 0.25 and getattr(row,'speed') < 8 :
+#        workTime+=getattr(row,'deltaT')
+#print(workTime)
 
-print(total)
+index_list = df1.index[df1['angles'] > 150].tolist()
+print(index_list)
 
-#df1.to_csv('Compactor_modified1.csv')
+for i in index_list:
+    
+
 print("success")
